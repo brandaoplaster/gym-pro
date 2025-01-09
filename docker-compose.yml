@@ -1,0 +1,40 @@
+services:
+  gym_pro:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: gym_pro
+    command: bin/rails server -b 0.0.0.0
+    depends_on:
+      - gym_pro_db
+    ports:
+      - "3001:3000"
+    environment:
+      RAILS_ENV: development
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle
+    networks:
+      - gym_pro_net
+
+  gym_pro_db:
+    image: "postgres:13"
+    container_name: gym_pro_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - gym_pro_net
+
+volumes:
+  gem_cache:
+  postgres_data:
+
+networks:
+  gym_pro_net:
