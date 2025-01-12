@@ -4,13 +4,14 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     container_name: gym_pro
-    command: bin/rails server -b 0.0.0.0
+    command: foreman start -f Procfile.dev
     depends_on:
       - gym_pro_db
     ports:
       - "3001:3000"
     environment:
       RAILS_ENV: development
+      TAILWINDCSS_ENV: watch
     env_file:
       - .env
     volumes:

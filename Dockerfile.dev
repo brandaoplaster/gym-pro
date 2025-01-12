@@ -29,5 +29,10 @@ RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
 COPY Gemfile Gemfile.lock ./
+RUN bundle config set --global no-document 'true'
+
+COPY Procfile.dev ./
 
 COPY . .
+EXPOSE 3001
+CMD ["foreman", "start"]
