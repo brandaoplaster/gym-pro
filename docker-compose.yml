@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     container_name: gym_pro
-    command: foreman start -f Procfile.dev
+    command: ./start.sh
     depends_on:
       - gym_pro_db
     ports:
@@ -12,6 +12,8 @@ services:
     environment:
       RAILS_ENV: development
       TAILWINDCSS_ENV: watch
+    tty: true
+    stdin_open: true
     env_file:
       - .env
     volumes:
