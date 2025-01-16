@@ -28,8 +28,8 @@
             <td class="px-6 py-4"><%= user.gender %></td>
             <td class="px-6 py-4"><%= user.status %></td>
             <td class="px-6 py-4 text-right">
-              <a href="<%= edit_user_path(user) %>"
-                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <%= link_to "Edit", users_path, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2" %>
+              <%= link_to "Show", user_path(user.id), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
             </td>
           </tr>
         <% end %>
