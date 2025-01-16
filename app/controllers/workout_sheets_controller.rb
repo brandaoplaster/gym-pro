@@ -9,6 +9,7 @@ class WorkoutSheetsController < ApplicationController
   end
 
   def new
+    @users = User.all
     @workout_sheet = WorkoutSheet.new
   end
 
