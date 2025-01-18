@@ -1,0 +1,40 @@
+<div class="relative w-full">
+  <div class="flex justify-between items-center pb-4">
+    <h1 class="text-xl font-bold text-gray-800 dark:text-black">Exercise List</h1>
+    <a href="<%= new_exercise_path %>"
+       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-blue-800">
+      New Exercise
+    </a>
+  </div>
+
+  <div class="relative overflow-x-auto w-full">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">Name</th>
+          <th scope="col" class="px-6 py-3">Description</th>
+          <th scope="col" class="px-6 py-3">
+            <span class="sr-only">Edit</span> /
+            <span class="sr-only">Show</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exercises.each do |exercise| %>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <%= exercise.name %>
+            </th>
+            <td class="px-6 py-4">
+              <%= exercise.description %>
+            </td>
+            <td class="px-6 py-4 text-right">
+              <%= link_to "Edit", edit_exercise_path(exercise), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2" %>
+              <%= link_to "Show", exercise_path(exercise.id), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
