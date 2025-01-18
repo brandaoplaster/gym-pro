@@ -1,5 +1,5 @@
 class WorkoutSheetsController < ApplicationController
-  before_action :workout_sheet_params, only: %i[show edit update destroy]
+  before_action :set_workout_sheet, only: %i[show edit update destroy]
 
   def index
     @workout_sheets = WorkoutSheet.all
@@ -23,6 +23,7 @@ class WorkoutSheetsController < ApplicationController
   end
 
   def edit
+    @users = User.all
   end
 
   def update
