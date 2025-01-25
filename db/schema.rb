@@ -22,9 +22,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_21_010834) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.date "birth_date", null: false
-    t.string "gender", null: false
+    t.string "name"
+    t.date "birth_date"
+    t.string "gender"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
