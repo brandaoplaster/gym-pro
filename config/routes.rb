@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "home#index"
-  resources :users
-  resources :workout_sheets
-  resources :exercises
-  resources :workouts
+
+  draw :back_office
+  draw :clients
 end
