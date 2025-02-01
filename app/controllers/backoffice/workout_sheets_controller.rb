@@ -1,4 +1,4 @@
-module BackOffice
+module Backoffice
   class WorkoutSheetsController < ApplicationController
     before_action :set_workout_sheet, only: %i[show edit update destroy]
 
