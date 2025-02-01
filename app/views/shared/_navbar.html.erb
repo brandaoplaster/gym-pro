@@ -25,16 +25,16 @@
 
         <% if user_signed_in? %>
           <li class="text-gray-400">
-            <%= link_to "Users", users_path, class: "block py-2 px-3 #{"active" if current_page?(users_path)}" %>
+            <%= link_to "Users", backoffice_users_path, class: "block py-2 px-3 #{"active" if current_page?(backoffice_users_path)}" %>
           </li>
           <li class="text-gray-400">
-            <%= link_to "Workout Sheets", workout_sheets_path, class: "block py-2 px-3 #{"active" if current_page?(workout_sheets_path)}" %>
+            <%= link_to "Workout Sheets", backoffice_workout_sheets_path, class: "block py-2 px-3 #{"active" if current_page?(backoffice_workout_sheets_path)}" %>
           </li>
           <li class="text-gray-400">
-            <%= link_to "Exercises", exercises_path, class: "block py-2 px-3 #{"active" if current_page?(exercises_path)}" %>
+            <%= link_to "Exercises", backoffice_exercises_path, class: "block py-2 px-3 #{"active" if current_page?(backoffice_exercises_path)}" %>
           </li>
           <li class="text-gray-400">
-            <%= link_to "Workouts", workouts_path, class: "block py-2 px-3 #{"active" if current_page?(workouts_path)}" %>
+            <%= link_to "Workouts", backoffice_workouts_path, class: "block py-2 px-3 #{"active" if current_page?(backoffice_workouts_path)}" %>
           </li>
           <li class="text-gray-400">
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "block py-2 px-3" %>
