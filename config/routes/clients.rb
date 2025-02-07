@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  namespace :client do
-    root "dashboard#index"
+  namespace :clients do
+     get 'home', to: 'home#index', as: 'home'
 
-    devise_for :auth, class_name: "User", skip: [:registrations], controllers: {
+    devise_for :client, class_name: "User", skip: [:registrations], controllers: {
       sessions: "clients/sessions"
     }
   end
