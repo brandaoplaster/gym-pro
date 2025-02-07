@@ -1,4 +1,4 @@
-module Client
+module Clients
   class SessionsController < Devise::SessionsController
     def create
       super do |resource|
