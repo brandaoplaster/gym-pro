@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     if resource.admin?
       backoffice_dashboard_path
     else
-      client_home_path
+      clients_home_path
     end
   end
 end

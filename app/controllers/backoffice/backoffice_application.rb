@@ -1,11 +1,12 @@
 module Backoffice
   class BackofficeApplication < ActionController::Base
-    before_action :authorize__admin!
+    layout "admin"
+    before_action :authorize_admin!
 
     private
 
-    def authorize__admin!
-      redirect_to client_root_path, alert: "Access Denied", unless curent_user.admin?
+    def authorize_admin!
+      redirect_to client_root_path, alert: "Access Denied", unless current_user.admin?
     end
   end
 end
