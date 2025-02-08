@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.admin?
-      backoffice_root_path
+      backoffice_dashboard_path
     else
-      client_root_path
+      clients_home_path
     end
   end
 end

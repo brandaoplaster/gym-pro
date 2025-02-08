@@ -23,13 +23,8 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <header>
-      <%= render "clients/layouts/navbar" %>
-    </header>
-    <main class="min-h-screen bg-gray-100">
-      <%= yield %>
-    </main>
-  </body>
+<body>
+  <%= render "admin/layouts/navbar" %>
+  <%= yield %>
+</body>
 </html>
