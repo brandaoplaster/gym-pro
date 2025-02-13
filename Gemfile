@@ -52,6 +52,14 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rubocop"
+  gem "rubocop-github", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec"
+  gem "reek", "~> 6.1.2", require: false
+  gem "rufo", "~> 0.18.0"
 end
 
 group :development do
