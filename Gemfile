@@ -54,7 +54,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem "reek", "~> 6.1.2", require: false
+  gem "reek", "~> 6.4.0", require: false
   gem "rubocop"
   gem "rubocop-github", require: false
   gem "rubocop-performance", require: false
