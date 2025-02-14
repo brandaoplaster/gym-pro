@@ -2,6 +2,8 @@
 
 module Backoffice
   class SessionsController < Devise::SessionsController
+    layout "admin"
+
     def create
       super do |resource|
         unless resource.admin?

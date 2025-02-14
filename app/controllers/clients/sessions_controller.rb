@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Clients
   class SessionsController < Devise::SessionsController
+    layout "client"
+
     def create
       super do |resource|
         unless resource.client?
