@@ -1,0 +1,43 @@
+detectors:
+  Attribute:
+    enabled: false  # Permite atributos públicos, comuns no Rails
+
+  InstanceVariableAssumption:
+    enabled: false  # Evita falsos positivos em controllers e views do Rails
+
+  TooManyInstanceVariables:
+    max_instance_variables: 6  # Permite até 6 variáveis de instância por classe, útil para ActiveRecord
+
+  TooManyMethods:
+    max_methods: 20  # Classes grandes podem ter até 20 métodos antes de um alerta
+
+  TooManyStatements:
+    max_statements: 15  # Permite métodos um pouco maiores, comuns em controllers
+
+  NestedIterators:
+    max_allowed_nesting: 2  # Evita loops aninhados profundos, mas permite uso moderado
+
+  UtilityFunction:
+    enabled: true  # Permite métodos utilitários, úteis para Service Objects e Helpers
+
+  DataClump:
+    enabled: false  # Desativa alerta sobre métodos compartilhando muitos parâmetros, comum no Rails
+
+  DuplicateMethodCall:
+    enabled: true  # Detecta chamadas repetidas de métodos dentro de um bloco
+
+  UncommunicativeVariableName:
+    enabled: false  # Permite nomes curtos, comuns em blocos (`x`, `y`, `i`)
+
+  ControlParameter:
+    enabled: false  # Evita falsos positivos em estratégias e controllers
+
+  IrresponsibleModule:
+    enabled: false
+
+exclude_paths:
+  - "db/migrate"
+  - "config/initializers"
+  - "spec"
+  - "test"
+  - "vendor"
