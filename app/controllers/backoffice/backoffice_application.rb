@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Backoffice
   class BackofficeApplication < ActionController::Base
     layout "admin"
@@ -6,7 +8,7 @@ module Backoffice
     private
 
     def authorize_admin!
-      redirect_to client_root_path, alert: "Access Denied", unless current_user.admin?
+      redirect_to client_root_path, alert: "Access Denied" unless current_user.admin?
     end
   end
 end
