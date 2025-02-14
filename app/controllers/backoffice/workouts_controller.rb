@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Backoffice
-  class WorkoutsController < ApplicationController
+  class WorkoutsController < BackofficeApplication
     before_action :set_workout, only: %i[show edit update destroy]
 
     def index

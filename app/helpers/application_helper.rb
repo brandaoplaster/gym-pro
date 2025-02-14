@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-  def flash_class(type)
+  def self.flash_class(type)
     case type.to_sym
     when :notice then "bg-green-500 text-white"
     when :alert then "bg-yellow-500 text-white"
