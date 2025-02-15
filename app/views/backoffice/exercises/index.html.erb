@@ -1,13 +1,12 @@
-<div class="relative w-full">
-  <div class="flex justify-between items-center pb-4">
-    <h1 class="text-xl font-bold text-gray-800 dark:text-black">Exercise List</h1>
-    <a href="<%= new_backoffice_exercise_path %>"
-       class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-blue-800">
-    </a>
+<div class="min-h-[calc(100vh-64px)] px-32 pt-20">
+  <header class="mb-8 mt-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-800">
+      Exercises List
+    </h1>
     <%= link_to "New Exercise", new_backoffice_exercise_path,
-                class: "px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-blue-800" %>
-  </div>
-
+                class: "rounded-md px-3.5 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-medium cursor-pointer sm:ml-4"
+    %>
+  </header>
   <div class="relative overflow-x-auto w-full">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
