@@ -9,7 +9,7 @@ module Backoffice
         unless resource.admin?
           sign_out resource
           flash[:alert] = "Restricted access to Backoffice"
-          redirect_to new_admin_session_path and return
+          redirect_to new_backoffice_admin_session_path and return
         end
       end
     end
