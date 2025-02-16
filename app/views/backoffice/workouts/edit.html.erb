@@ -1,12 +1,8 @@
 <div class="min-h-screen px-4 sm:px-12 lg:px-48 pt-20">
-  <% content_for :title, "Edit workout" %>
-  <header class="mb-8 mt-4 flex flex-col sm:flex-row justify-between items-center">
-    <h1 class="text-2xl font-bold text-gray-900 mb-4 sm:mb-0">
-      New Workout
-    </h1>
-    <%= link_to "Back to Workouts", backoffice_workouts_path,
-      class: "rounded-md px-3.5 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-medium cursor-pointer sm:ml-4"
-    %>
-  </header>
+  <%= render "backoffice/layouts/header",
+    title: "Edit Workout",
+    link_text: "Back to Workouts",
+    link_path: backoffice_workouts_path
+  %>
   <%= render "form", workout: @workout %>
 </div>
