@@ -19,9 +19,11 @@ module Backoffice
     def create
       @workout = Workout.new(workout_params)
       if @workout.save
-        redirect_to workouts_path, notice: "Workout sheet was successfully created."
+        flash[:notice] = "Workout sheet was successfully created."
+        redirect_to backoffice_workouts_path
       else
-        render :new
+        flash[:error] = "Failed to create workout. Please check the form for errors."
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -31,15 +33,21 @@ module Backoffice
 
     def update
       if @workout.update(workout_params)
-        redirect_to workouts_path, notice: "Workout sheet was successfully updated."
+        flash[:notice] = "Workout sheet was successfully updated."
+        redirect_to backoffice_workouts_path
       else
-        render :edit
+        lash[:error] = "Failed to update workout. Please check the form for errors."
+        render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
-      @workout.destroy
-      redirect_to workouts_url, notice: "Workout sheet was successfully destroyed."
+      if @workout.destroy
+        flash[:notice] = "Workout was successfully destroyed."
+      else
+        flash[:error] = "Failed to destroy exercise."
+      end
+      redirect_to backoffice_workouts_path
     end
 
     private
