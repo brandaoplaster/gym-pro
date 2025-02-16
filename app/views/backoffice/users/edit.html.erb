@@ -1,12 +1,8 @@
-<div class="relative w-full">
-  <% content_for :title, "Edit User" %>
-  <div class="flex justify-between items-center pb-4">
-    <h1 class="text-xl font-bold text-gray-800 dark:text-black">
-      New User
-    </h1>
-    <%= link_to "Back to users", users_path,
-      class: "px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-blue-800"
-    %>
-  </div>
+<div class="min-h-screen px-4 sm:px-12 lg:px-48 pt-20">
+  <%= render "backoffice/layouts/header",
+    title: "Edit User",
+    link_text: "Back to users",
+    link_path: backoffice_users_path
+  %>
   <%= render "form", user: @user %>
 </div>
