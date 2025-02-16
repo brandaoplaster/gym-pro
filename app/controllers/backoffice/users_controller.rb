@@ -31,15 +31,21 @@ module Backoffice
 
     def update
       if @user.update(user_params)
-        redirect_to users_path, notice: "User was successfully updated."
+        flash[:notice] = "User was successfully updated."
+        redirect_to backoffice_users_path
       else
-        render :edit
+        flash[:error] = "Failed to update user. Please check the form for errors."
+        render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
-      @user.destroy
-      redirect_to users_url, notice: "User was successfully destroyed."
+      if @user.destroy
+        flash[:notice] = "User was successfully destroyed."
+      else
+        flash[:error] = "Failed to destroy user."
+      end
+      redirect_to backoffice_users_path
     end
 
     private
@@ -49,7 +55,7 @@ module Backoffice
     end
 
     def user_params
-      params.require(:user).permit(:name, :birth_date, :gender)
+      params.require(:user).permit(:name, :birth_date, :gender, :password, :password_confirmation, :email)
     end
   end
 end
