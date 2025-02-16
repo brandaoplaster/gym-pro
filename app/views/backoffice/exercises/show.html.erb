@@ -1,17 +1,10 @@
-
 <div class="min-h-[calc(100vh-64px)] px-32 pt-20">
-  <header class="mb-8 mt-4 flex justify-between items-center">
-    <% content_for :title, "Showing Exercise" %>
-    <h1 class="text-2xl font-bold text-gray-800">
-      Showing Exercise
-    </h1>
-    <%= link_to "Back to Exercise", backoffice_exercises_path,
-      class: "rounded-md px-3.5 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-medium cursor-pointer sm:ml-4"
-    %>
-  </header>
-
+  <%= render "backoffice/layouts/header",
+    title: "Showing Exercise",
+    link_text: "Back to Exercises",
+    link_path: backoffice_exercises_path
+  %>
   <%= render @exercise %>
-
   <%= link_to "Edit this exercise", edit_backoffice_exercise_path(@exercise), class: "mt-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
   <div class="inline-block ml-2">
     <%= button_to "Destroy this exercise", backoffice_exercise_path(@exercise), method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium" %>
