@@ -1,0 +1,11 @@
+<div class="nested-fields flex items-center space-x-3 p-2 border-b border-gray-200" data-exercise-sets-target="exerciseSet">
+  <%= f.select :exercise_id, Exercise.all.map { |e| [e.name, e.id] }, { include_blank: true },
+     class: "block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full" %>
+  <%= f.number_field :sets, min: 1, class: [
+      "block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full border-gray-400 focus:outline-blue-600"], placeholder: 'Sets' %>
+  <%= f.number_field :reps, min: 1,  class: [
+      "block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full border-gray-400 focus:outline-blue-600"], placeholder: 'Reps' %>
+  <button data-action="click->exercise-sets#removeExercise" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+    Remove
+  </button>
+</div>
