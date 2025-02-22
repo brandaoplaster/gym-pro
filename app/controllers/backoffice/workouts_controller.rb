@@ -57,7 +57,8 @@ module Backoffice
     end
 
     def workout_params
-      params.require(:workout).permit(:name, :workout_sheet_id)
+      params.require(:workout).permit(:name, :workout_sheet_id,
+        exercise_sets_attributes: [:id, :exercise_id, :sets, :reps, :_destroy])
     end
   end
 end
