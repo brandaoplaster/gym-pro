@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum :role, [:admin, :client]
+
+  has_many :workout_sheets
 end
