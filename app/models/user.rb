@@ -9,4 +9,5 @@ class User < ApplicationRecord
   enum :role, [:admin, :client]
 
   has_many :workout_sheets
+  has_many :workout_sessions
 end
