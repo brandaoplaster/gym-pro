@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_17_234447) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_22_221822) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -58,6 +58,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_234447) do
     t.index ["workout_id"], name: "index_workout_exercises_on_workout_id"
   end
 
+  create_table "workout_sessions", force: :cascade do |t|
+    t.bigint "workout_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "started_at", null: false
+    t.datetime "finished_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workout_sessions_on_user_id"
+    t.index ["workout_id"], name: "index_workout_sessions_on_workout_id"
+  end
+
   create_table "workout_sheets", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -71,6 +82,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_234447) do
     t.bigint "workout_sheet_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position", default: 0, null: false
+    t.index ["position"], name: "index_workouts_on_position"
     t.index ["workout_sheet_id"], name: "index_workouts_on_workout_sheet_id"
   end
 
@@ -78,6 +91,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_234447) do
   add_foreign_key "exercise_sets", "workouts"
   add_foreign_key "workout_exercises", "exercises"
   add_foreign_key "workout_exercises", "workouts"
+  add_foreign_key "workout_sessions", "users"
+  add_foreign_key "workout_sessions", "workouts"
   add_foreign_key "workout_sheets", "users"
   add_foreign_key "workouts", "workout_sheets"
 end
