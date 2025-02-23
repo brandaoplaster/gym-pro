@@ -1,46 +1,76 @@
+<!-- app/views/client/home/index.html.erb -->
 <div class="min-h-[calc(100vh-64px)] px-4 sm:px-8 md:px-16 lg:px-32 pt-20 bg-black">
   <section class="container mx-auto py-10 px-4">
     <h1 class="text-4xl font-extrabold text-yellow-400 mb-10 text-center tracking-tight">
-      Olá, boa noite <%= current_clients_client.name %>
+      Olá, boa noite <%= current_client.name %>
     </h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Treino Passado -->
       <div class="bg-gray-900 shadow-xl rounded-xl p-6 transform transition hover:scale-105 hover:border-2 hover:border-yellow-400">
         <h2 class="text-2xl font-bold text-yellow-400 mb-4">Treino Passado</h2>
-        <ul class="space-y-3 mb-4">
-          <li class="text-gray-300 text-lg">Supino: 3 séries x 10 reps</li>
-          <li class="text-gray-300 text-lg">Agachamento: 4 séries x 12 reps</li>
-          <li class="text-gray-300 text-lg">Levantamento Terra: 3 séries x 8 reps</li>
-        </ul>
-        <button class="w-full bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition">
-          Ver Treino
-        </button>
-      </div>
-      <div class="bg-gray-900 shadow-xl rounded-xl p-6 transform transition hover:scale-105 hover:border-2 hover:border-yellow-400">
-        <h2 class="text-2xl font-bold text-yellow-400 mb-4">Treino Atual</h2>
-        <ul class="space-y-3 mb-4">
-          <li class="text-gray-300 text-lg">Rosca Direta: 3 séries x 12 reps</li>
-          <li class="text-gray-300 text-lg">Tríceps Pulley: 3 séries x 10 reps</li>
-          <li class="text-gray-300 text-lg">Abdominal: 4 séries x 15 reps</li>
-        </ul>
-        <div class="space-y-3">
+        <% if @last_workout_session %>
+          <p class="text-gray-300 text-lg mb-2">Ficha: <%= @last_workout_session.sheet_name %></p>
+          <p class="text-gray-300 text-lg mb-2">Treino: <%= @last_workout_session.workout_name %></p>
+          <ul class="space-y-3 mb-4">
+            <% @last_workout_session.workout.exercise_sets.each do |set| %>
+              <li class="text-gray-300 text-lg">
+                <%= set.exercise.name %>: <%= set.sets %> séries x <%= set.reps %> reps
+              </li>
+            <% end %>
+          </ul>
           <button class="w-full bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition">
-            Iniciar Treino
-          </button>
-          <button class="w-full bg-gray-800 text-yellow-400 font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition">
             Ver Treino
           </button>
-        </div>
+        <% else %>
+          <p class="text-gray-300 text-lg">Nenhum treino concluído ainda.</p>
+        <% end %>
       </div>
+
+      <!-- Treino Atual -->
+      <div class="bg-gray-900 shadow-xl rounded-xl p-6 transform transition hover:scale-105 hover:border-2 hover:border-yellow-400">
+        <h2 class="text-2xl font-bold text-yellow-400 mb-4">Treino Atual</h2>
+        <% if @current_workout_session %>
+          <p class="text-gray-300 text-lg mb-2">Ficha: <%= @current_workout_session.sheet_name %></p>
+          <p class="text-gray-300 text-lg mb-2">Treino: <%= @current_workout_session.workout_name %></p>
+          <ul class="space-y-3 mb-4">
+            <% @current_workout_session.workout.exercise_sets.each do |set| %>
+              <li class="text-gray-300 text-lg">
+                <%= set.exercise.name %>: <%= set.sets %> séries x <%= set.reps %> reps
+              </li>
+            <% end %>
+          </ul>
+          <div class="space-y-3">
+            <button class="w-full bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition">
+              Iniciar Treino
+            </button>
+            <button class="w-full bg-gray-800 text-yellow-400 font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition">
+              Ver Treino
+            </button>
+          </div>
+        <% else %>
+          <p class="text-gray-300 text-lg">Nenhum treino em andamento.</p>
+        <% end %>
+      </div>
+
+      <!-- Próximo Treino -->
       <div class="bg-gray-900 shadow-xl rounded-xl p-6 transform transition hover:scale-105 hover:border-2 hover:border-yellow-400">
         <h2 class="text-2xl font-bold text-yellow-400 mb-4">Próximo Treino</h2>
-        <ul class="space-y-3 mb-4">
-          <li class="text-gray-300 text-lg">Leg Press: 4 séries x 12 reps</li>
-          <li class="text-gray-300 text-lg">Cadeira Extensora: 3 séries x 10 reps</li>
-          <li class="text-gray-300 text-lg">Panturrilha: 3 séries x 15 reps</li>
-        </ul>
-        <button class="w-full bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition">
-          Ver Treino
-        </button>
+        <% if @next_workout %>
+          <p class="text-gray-300 text-lg mb-2">Ficha: <%= @next_workout.workout_sheet.title %></p>
+          <p class="text-gray-300 text-lg mb-2">Treino: <%= @next_workout.name %></p>
+          <ul class="space-y-3 mb-4">
+            <% @next_workout.exercise_sets.each do |set| %>
+              <li class="text-gray-300 text-lg">
+                <%= set.exercise.name %>: <%= set.sets %> séries x <%= set.reps %> reps
+              </li>
+            <% end %>
+          </ul>
+          <button class="w-full bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition">
+            Ver Treino
+          </button>
+        <% else %>
+          <p class="text-gray-300 text-lg">Nenhum próximo treino planejado.</p>
+        <% end %>
       </div>
     </div>
   </section>
