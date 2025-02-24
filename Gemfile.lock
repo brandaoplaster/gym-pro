@@ -285,7 +285,7 @@ GEM
     rubocop-rspec (3.0.0)
       rubocop (~> 1.40)
     ruby-progressbar (1.13.0)
-    rufo (0.18.0)
+    rufo (0.18.1)
     securerandom (0.4.1)
     solid_cable (3.0.5)
       actioncable (>= 7.2)
@@ -376,7 +376,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rails-omakase
   rubocop-rspec
-  rufo (~> 0.18.0)
+  rufo (~> 0.18.1)
   solid_cable
   solid_cache
   solid_queue

@@ -60,7 +60,7 @@ group :development, :test do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec"
-  gem "rufo", "~> 0.18.0"
+  gem "rufo", "~> 0.18.1"
 end
 
 group :development do
