@@ -5,7 +5,6 @@ module Clients
     before_action :set_user, only: %i[show]
 
     def show
-      puts @user.inspect
     end
 
     private
