@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Clients::UserHelper
+
   def self.flash_class(type)
     case type.to_sym
     when :notice then "bg-green-500 text-white"
